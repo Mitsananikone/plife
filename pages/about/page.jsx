@@ -45,7 +45,7 @@ export default function AboutPage() {
 
   return (
     <div
-      className={styles.background}
+      className="background"
       style={{
         backgroundImage: "url('/images/about-sand.png')",
       }}

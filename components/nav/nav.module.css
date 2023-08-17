@@ -1,0 +1,175 @@
+.nav {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    background-color: transparent;
+
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navContainer>div {
+    display: flex;
+    /* Show the regular menu items in a row */
+}
+
+
+
+.md\\:hidden .navContainer>div {
+    display: none;
+    /* Hide the regular menu items on medium screen */
+}
+
+.md\\:hidden .navContainer>button {
+    display: block;
+    /* Show the hamburger button on medium screen */
+}
+
+
+.navItem {
+    z-index: 20;
+    margin-left: 4em;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.navItemHamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    /* Align items to the right */
+    /* background-color: transparent; */
+    /* Set background to transparent */
+    /* width: auto; */
+}
+
+.hamburger {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .hamburger {
+        display: flex;
+        /* border: 1px solid red; */
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .navContainer>div {
+        display: none;
+        background-color: transparent;
+    }
+
+    .nav {
+        background-color: transparent;
+        /* border: 1px solid green; */
+    }
+
+    .navItemHamburger {
+
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        height: 0;
+
+    }
+
+    .navItem {
+
+        align-items: right;
+        font-size: xx-large;
+    }
+
+
+    .navContainer>button {
+        display: block;
+        /* Show the hamburger button */
+    }
+
+    .hamburger {
+        display: flex;
+        /* Display the hamburger menu when it is open */
+
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .navContainer>div {
+        display: block;
+        background-color: transparent !important;
+        /* Show the regular menu items */
+    }
+
+    .navContainer>button {
+        display: none;
+        /* Hide the hamburger button */
+    }
+
+    .navItemHamburger {
+        flex-direction: column;
+
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+    .nav {
+        /* border: 1px solid blue; */
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .nav {
+        /* border: 1px solid aqua; */
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .nav {
+        /* border: 1px solid yellow; */
+    }
+
+    .navItem {
+        padding: 0.1em;
+        font-size: x-small;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .nav {
+        /* border: 1px solid orange; */
+    }
+
+    .navItem {
+        padding: 0.1em;
+        font-size: small;
+    }
+}
+
+
+@media screen and (min-width: 1201px) {
+    .nav {
+        /* border: 1px solid blue; */
+    }
+
+    .navItem {
+        padding: 0.1em;
+        font-size: larger;
+    }
+}

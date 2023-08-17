@@ -28,9 +28,28 @@ html, body {
 
 }
 
+.background {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  z-index: -10,
+}
+
 .bounds {
   border: 1px solid red;
 }
+
+.b1{ border: 1px solid red;}
+.b2{ border: 1px solid orange;}
+.b3{ border: 1px solid yellow;}
+.b4{ border: 1px solid green;}
+.b5{ border: 1px solid blue;}
+
 
 .custom-bullet-list {
   list-style-type: none;
@@ -62,10 +81,9 @@ html, body {
   align-items: center;
   width: 100vw;
   height: 100%;
-  z-index: -5;
+  z-index: -9999;
 
 }
-
 
 .stretch-text {
   width: 100%;
@@ -135,10 +153,8 @@ html, body {
 
 .logo {
   height: 2em;
-  /* Adjust as needed */
-  width: 7em;
-  /* Adjust as needed */
-  margin-left: 10em;
+  width: 2.5em;
+  margin-left: 3em;
   scale: 4;
   z-index: 99;
 }
@@ -151,46 +167,46 @@ html, body {
   text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
-
 @media screen and (max-width: 320px) {
-  .container {
-    width: 100%;
-    /* border: 1px solid aqua; */
+  .background {
+      width: 100vw;
+      /* border: 1px solid aqua; */
+      border: 1px solid red;
   }
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
-  .container {
-    width: 480px;
-    /* border: 1px solid blue; */
+  .background {
+    width: 110%;
+      /* border: 1px solid blue; */
   }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-  .container {
-    width: 768px;
-    /* border: 1px solid green; */
+  .background {
+    width: 100%;
+      /* border: 1px solid green; */
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  .container {
-    display: 100%;
-    width: 1024px;
-    /* border: 1px solid yellow; */
+  .background {
+      display: 100%;
+      width: 100%;
+      /* border: 1px solid yellow; */
   }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
-  .container {
-    width: 1200px;
-    /* border: 1px solid orange; */
+  .background {
+    width: 100%;
+      /* border: 1px solid orange; */
   }
 }
 
 @media screen and (min-width: 1201px) {
-  .container {
+  .background {
     width: 100%;
-    /* border: 1px solid blue; */
+      /* border: 1px solid blue; */
   }
 }

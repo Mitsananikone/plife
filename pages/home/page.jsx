@@ -10,12 +10,16 @@ export default function LandingPage() {
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           minHeight: '100vh', // Set a minimum height
+          minWidth: '100vw',
           marginTop: '-70px',
           zIndex: -99,
+          overflow: 'visible',
         }}
-        className="flex justify-center h-full w-full flex-col m-0 p-0"
+        className="background"
       >
+        <div>
        <UniqueSlick/>
+       </div>
       </div>
     );
   }

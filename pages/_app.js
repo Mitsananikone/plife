@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import '../styles/globals.css';
-import  Navbar  from '../components/nav/Nav';
+import  Navbar  from '../components/nav/nav';
 
 
 
