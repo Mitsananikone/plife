@@ -6,18 +6,10 @@ export default function LandingPage() {
       <div
         style={{
           backgroundImage: "url('/images/home-sideface.png')",
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          minHeight: '100vh', // Set a minimum height
-          minWidth: '100vw',
-          marginTop: '-70px',
-          zIndex: -99,
-          overflow: 'visible',
         }}
         className="background"
       >
-        <div>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', marginTop: '25%' }}>
        <UniqueSlick/>
        </div>
       </div>

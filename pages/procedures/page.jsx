@@ -53,17 +53,14 @@ export default function ProceduresCard() {
 
   return (
     <div
-  className="flex flex-col justify-center items-center h-full w-full m-0 p-0 bg-cover bg-center relative"
-  style={{
+      className="background"
+      style={{
     backgroundImage: "url('/images/procedures-legs.png')",
-    minHeight: "100vh",
-    marginTop: "-70px",
-    zIndex: 0, // <-- Change this line
   }}
 >
       <div
         ref={containerRef}
-        className="bg-transparent w-2/5 mt-64 justify-center -ml-64"
+        className="bg-transparent w-2/5 mt-64 justify-center -ml-64 "
       >
         {" "}
         {/* 60% width */}

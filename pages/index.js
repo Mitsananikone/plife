@@ -11,8 +11,8 @@ import BreastImplantInfo from '@/components/cosmeticSurgery/breastImplant/breast
 
 export default function Home() {
     return (
-         <div className="container">
-        {/* <div className="full-flex-centered"> */}
+        //  <div className="container">
+     <div className="full-flex-centered"> 
             {/* <Treatments/> */}
             {/* <CosmeticSurgeryPage/>
 <BreastImplantInfo/> */}
