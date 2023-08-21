@@ -1,0 +1,56 @@
+.procedureContainer {
+    display: flex;
+    overflow: hidden;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0;
+    margin-top: 0rem;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    background-color: #E5E7EB;
+    height: 100vh;
+
+}
+
+.procedureContainer>h1 {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: #6B7280;
+    scale: 1.7;
+}
+
+.tCardGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+    .tCardGroup {
+        margin-left: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .tCardGroup {
+        margin-left: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .tCardGroup {
+        margin-left: 3rem;
+    }
+}
+
+@media (min-width: 1536px) {
+    .tCardGroup {
+        margin-left: 4rem;
+    }
+}

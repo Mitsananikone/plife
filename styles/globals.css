@@ -177,7 +177,8 @@ html, body {
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
   .background {
-    width: 110%;
+    width: 100vw;
+    height: 100vh;
       /* border: 1px solid blue; */
   }
 }
