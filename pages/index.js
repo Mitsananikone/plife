@@ -6,22 +6,27 @@ import Treatments from './procedures/type/page';
 import CosmeticSurgeryPage from './p_cosmeticsurgery/page';
 import CosmeticSurgeryCard from '@/components/cosmeticSurgery/cosmeticSurgery';
 import BreastImplantInfo from '@/components/cosmeticSurgery/breastImplant/breastImplant';
-
+import LandingPopup from '@/components/landing/page';
 
 
 export default function Home() {
     return (
         //  <div className="container">
+        <>
+        <LandingPopup/>
      <div className="full-flex-centered"> 
             {/* <Treatments/> */}
             {/* <CosmeticSurgeryPage/>
 <BreastImplantInfo/> */}
+            
             <LandingPage />
+     
             {/* <AboutPage/>
             <ProcedurePage/> */}
-
+           
 
             {/* </div> */}
         </div>
+        </>
     );
 }
