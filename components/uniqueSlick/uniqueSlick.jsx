@@ -40,7 +40,7 @@ const UniqueSlick = () => {
       <button
         className={styles.requestButton}
       >
-        REQUEST QUOTE
+        NEXT
       </button>
     </div>
   );

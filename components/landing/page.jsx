@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './landing.module.css';
-
+import Nav from '@/components/nav/nav';
 const LandingPopup = () => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -13,16 +13,20 @@ const LandingPopup = () => {
   if (!isOpen) return null;
 
   return (
+    <>
     <div className={styles.popupOverlay}>
+
       <div className={styles.popupContent} onClick={handleClose}>
         <div className={styles.popupText}>
-        <h1>EXPERIENCE OUR <i>UNIQUE</i></h1>
-        <h1><i>LIFE-CENTRIC BEAUTY.</i></h1>
-        <h2>START YOUR JOURNEY WITH US.</h2>
+        <h1 className={styles.row1}>EXPERIENCE OUR <i>UNIQUE</i></h1>
+        <h1 className={styles.row2}><i>LIFE-CENTRIC BEAUTY.</i></h1>
+        <h2>START YOUR JOURNEY WITH US</h2>
 
-        </div>
+
+      </div>
       </div>
     </div>
+    </>
   );
 }
 

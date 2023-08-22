@@ -67,7 +67,7 @@ export default function ProceduresCard() {
             “You don&#39;t pay for your beauty surgery - You pay for your unique
             experience“
           </p>
-          <h1 className={styles.mainTitle} >
+          <h1 ref={titleRef} className={styles.mainTitle}>
             OUR PROCEDURES
           </h1>
           <div className={styles.highlightText}>

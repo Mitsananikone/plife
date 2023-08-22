@@ -48,6 +48,7 @@ export default function AboutPage() {
       className="background"
       style={{
         backgroundImage: "url('/images/about-sand.png')",
+        textAlign: 'left',
       }}
     >
       <div className={styles.textContainer}>
@@ -83,8 +84,9 @@ export default function AboutPage() {
             us help you enhance your natural beauty and boost your confidence.
             Contact us today to start planning your cosmetic surgery holiday!“
           </p>
+          <button className={styles.submitButton}>REQUEST QUOTE</button>
         </div>
-        <button className={styles.submitButton}>REQUEST QUOTE</button>
+        
       </div>
     </div>
   );

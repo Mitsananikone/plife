@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import styles from './nav.module.css';
+import styles from "./nav.module.css";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,11 +15,12 @@ const Navbar = () => {
     { name: "QUOTE", link: "#quote" },
     { name: "PRICING", link: "#pricing" },
     { name: "PROMO", link: "#promo" },
+    { name: "CONTACTS", link: "#contacts" }, // Add this line
   ];
 
   return (
     <nav className={styles.nav}>
-       <div className={styles.navContainer}>
+      <div className={styles.navContainer}>
         <Link href="/home/page" passHref>
           <img
             src="/images/logo.svg"
@@ -38,13 +39,12 @@ const Navbar = () => {
               passHref
             >
               <span
-                className={styles.navItem}
-                onMouseOver={(e) => {
-                  e.target.style.textShadow = "2px 2px 4px #2119B4";
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.textShadow = "1px 1px 2px rgba(0,0,0,0.3)";
-                }}
+                className={`${styles.navItem} 
+              ${
+                item.name === "CONTACTS"
+                  ? `${styles.contacts} ${styles.sign} ${styles.link} ${styles.ledGlow}`
+                  : ""
+              }`}
               >
                 {item.name || item}
               </span>
@@ -74,8 +74,9 @@ const Navbar = () => {
               legacyBehavior
             >
               <span
-                className={styles.navItem}
-                
+                className={`${styles.navItem} ${
+                  item.name === "CONTACTS" ? styles.ledGlow : ""
+                }`}
                 onMouseOver={(e) => {
                   e.target.style.textShadow = "2px 2px 4px #2119B4";
                 }}

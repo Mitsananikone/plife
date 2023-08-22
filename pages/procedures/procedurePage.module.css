@@ -73,7 +73,9 @@
     border-radius: 4px;
 }
 
-
+.mainTitle {
+    width: 100%;
+}
 
 
 
@@ -106,17 +108,18 @@
     }
     .mainTitle {
         /* border: 1px solid red; */
-        font-size: large !important;
         letter-spacing: 2em;
         margin-bottom: -1em;
+        width: 100%;
     }
 }
 
-@media screen and (min-width: 769px) {}
+
+
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
     .headerText {
-        font-size: x-small;
+        font-size: 0.3em;
     }
     .highlightText {
         width: 100%;
@@ -147,7 +150,7 @@
         /* border: 1px solid cyan; */
         font-size: medium !important;
         margin-bottom: -1em;
-        width: 60%;
+        width: 80%;
         align-items: center;
         justify-content: center;
         margin-left: auto;
@@ -180,20 +183,24 @@
         display: flex-box;
         /* border: 1px solid red; */
         width: 90%;
-       
+        margin: 0;
+    
     }
+       
     .highlightText>p {
         /* border: 1px solid pink; */
         font-size: small;
     }
     .mainTitle {
-        /* border: 1px solid red; */
+
         font-size: small !important;
 
         margin-bottom: -1em;
         width: 60%;
+        margin: 0;
         margin-left: auto;
         margin-right: auto;
+   
     }
     .detailsButton{
         scale: 0.6;
@@ -202,7 +209,7 @@
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
     .headerText {
-        font-size: x-small;
+        font-size: 0.4em;
     }
     .highlightText {
         width: 100%;
@@ -210,7 +217,7 @@
         padding: 0;
     }
     .procedureComponent {
-        width: 80%;
+        width: 60%;
         /* border: 1px solid yellow; */
         display: flex;
         align-items: center;
@@ -227,13 +234,16 @@
         font-size: large;
     }
     .mainTitle {
-        /* border: 1px solid red; */
-        font-size: medium !important;
-        letter-spacing: 3em;
-        margin-bottom: -1em;
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
+
+            /* border: 1px solid red; */
+            font-size: large !important;
+            letter-spacing: 2em;
+            margin-bottom: -1em;
+    }
+
+    .mainTitle>h1{
+        width: auto;
+    
     }
     .detailsButton{
         scale: 0.6;
@@ -337,5 +347,19 @@
         font-size: xx-large !important;
         letter-spacing: 2em;
         margin-bottom: -1em;;
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 320px) {
+    .headerText {
+        font-size: 0.2em;;
+    }
+    .mainTitle >h1 {
+        font-size: 0.2em;
+        letter-spacing: 1em;
+        margin-bottom: -1em;
+        margin-left: auto;
+        margin-right: auto;
+    
     }
 }
