@@ -9,9 +9,9 @@ const Navbar = () => {
 
   const menuItems = [
     { name: "ABOUT", link: "/about/page" },
-    { name: "PROCEDURES", link: "/procedures/page" },
+    { name: "PROCEDURES", link: "/procedures/surgeryMovingHighlight" },
     { name: "FAQ", link: "#faq" },
-    { name: "RESOURCES", link: "/resources/page" },
+    { name: "RESOURCES", link: "/resources/pop_cosmeticsurgery/popup_allSurgeries" },
     { name: "QUOTE", link: "#quote" },
     { name: "PRICING", link: "#pricing" },
     { name: "PROMO", link: "#promo" },

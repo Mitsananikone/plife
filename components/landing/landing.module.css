@@ -40,7 +40,7 @@ overflow:visible;;
 }
 
 .popupContent:hover {
-    transform: scale(0.90); 
+    transform: scale(0.98); 
     transition: transform 1.75s ease-in-out;
 }
 

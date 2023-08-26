@@ -1,0 +1,35 @@
+.popupContainerFull {
+    position: fixed;  /* Making it fixed to cover the whole viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* No background-color to keep it transparent */
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;  /* Setting a high z-index to ensure it's above other content */
+  }
+
+.popupContainer {
+    /* border: 1px solid red; */
+    position: relative;
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+}
+
+.closePopup {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    background: none;
+    border: none;
+    font-size: 20px;
+}

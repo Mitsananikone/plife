@@ -7,13 +7,11 @@ import Footer from '@/components/footer/footer';
 
 
  export default function App({ Component, pageProps }) {
-    const router = useRouter();
-    const [user, setUser] = useState(null);
-    const [authorized, setAuthorized] = useState(false);
 
     return (
         <>
             <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>Phoenique Life</title>
             </Head>
                 <Navbar />

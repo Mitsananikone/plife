@@ -4,7 +4,6 @@
     border-radius: 0.5rem;
     border-width: 1px;
     border-color: #D1D5DB;
-    width: 20rem;
     transition-property: transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
@@ -12,10 +11,17 @@
     cursor: pointer;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     opacity: 0.7;
-    margin: 1rem;
+    display: flex-box;
+    align-items: center;
+    justify-content: center;
+    font-size:1em;
+    width: calc(25% - 1em); /* 25% for 4 cards in a row, subtracting margin */
+    margin: 0.5em;
+
+
 }
 
-.tCard:hover{
+.tCard:hover {
     transform: scaleY(1.02) scaleX(1.02);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
     opacity: 1;
@@ -34,23 +40,24 @@
     border-radius: 0.5rem;
     border-width: 1px;
     border-color: #D1D5DB;
-    width: 20rem;
-    height: 16rem;
+    width: 100%;  /* Will adapt to the parent's width */
+    height: 16vw; /* Relative height according to width */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .tCardImage {
-    object-fit: cover;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 
 }
 
 .tCardTitle {
-    padding: 1rem;
+    padding: 0.5em;
     width: 100%;
     text-align: center;
     background-color: #ffffff;
+    wrap: nowrap;
 }
 
 .tCardTitle>p {
@@ -60,4 +67,44 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
     transition-duration: 300ms;
+}
+
+@media screen and (min-width: 1025px){
+    .tCardTitle > p {
+        font-size: 0.6em; /* Resetting to default, as 0.8em is already set outside the media query */
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .tCardTitle > p {
+        font-size: 0.6em; /* Resetting to default, as 0.8em is already set outside the media query */
+    }
+    .tCard {
+        margin-bottom: 4em;
+        width: 33vw;
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .tCardTitle > p {
+        font-size: 0.45em; /* Making it a bit smaller for medium screens */
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+    .tCardTitle > p {
+        font-size: 0.3em; /* Even smaller for small screens */
+    }
+    .tCard {
+        margin-bottom: 4em;
+        width: 33vw;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .tCardTitle > p {
+        font-size: 0.6em; /* Smallest for very small screens */
+    }
 }

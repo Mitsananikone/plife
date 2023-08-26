@@ -1,10 +1,10 @@
 import LandingPage from './home/page'
 import AboutPage from './about/page';
-import ProcedurePage from './procedures/page';
+import ProcedurePage from './procedures/surgeryMovingHighlight';
 import TreatmentCard from '@/components/treatmentCard/treatmentCard';
-import Treatments from './procedures/type/page';
-import CosmeticSurgeryPage from './p_cosmeticsurgery/page';
-import CosmeticSurgeryCard from '@/components/cosmeticSurgery/cosmeticSurgery';
+import ProcedureTypes from './procedures/menu/procedureTypes';
+import CosmeticSurgeryPage from './resources/pop_cosmeticsurgery/popup_allSurgeries';
+import CosmeticSurgeryCard from '@/components/cosmeticSurgery/cosmeticSurgeryCard';
 import BreastImplantInfo from '@/components/cosmeticSurgery/breastImplant/breastImplant';
 import LandingPopup from '@/components/landing/page';
 
@@ -15,7 +15,7 @@ export default function Home() {
         <>
         <LandingPopup/>
      <div className="full-flex-centered"> 
-            {/* <Treatments/> */}
+            {/* <ProcedureTypes/> */}
             {/* <CosmeticSurgeryPage/>
 <BreastImplantInfo/> */}
             
