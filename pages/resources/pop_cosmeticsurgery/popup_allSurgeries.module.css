@@ -1,5 +1,6 @@
 .popupContainerFull {
-    position: fixed;  /* Making it fixed to cover the whole viewport */
+    position: fixed;
+    /* Making it fixed to cover the whole viewport */
     top: 0;
     left: 0;
     right: 0;
@@ -9,11 +10,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;  /* Setting a high z-index to ensure it's above other content */
-  }
+    z-index: 99999;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* this ensures smooth transition */
+    opacity: 1;
+    visibility: visible;
+    /* Setting a high z-index to ensure it's above other content */
+}
 
 .popupContainer {
-    /* border: 1px solid red; */
     position: relative;
     width: 90%;
     height: 90%;
@@ -27,9 +31,44 @@
 
 .closePopup {
     position: absolute;
-    right: 1em;
-    top: 1em;
+    /* Changed from relative to absolute */
+    top: 40px;
+    ;
+    /* Set the distance from the top edge */
+    right: 0;
+    /* Set the distance from the right edge */
     background: none;
     border: none;
     font-size: 20px;
+    z-index: 99999;
+}
+
+.closePopup:hover {
+    color: #ff5722;
+}
+
+.popup_navMenu {
+    margin-top: 4em;
+    border: 1px solid orange;
+    width: 35%;
+    z-index: 1;
+}
+
+.popup_info {
+    position: relative;
+    /* Allows for the positioning of child pseudo-elements */
+    margin-top: 4em;
+    padding-top: 6em;
+    /* increased padding to account for gradient height */
+    padding-bottom: 6em;
+    /* same as above */
+    width: 65%;
+    overflow-Y: auto;
+    z-index: 9999;
+    /* border: 1px solid yellow; */
+}
+
+.popupContainerHidden {
+    opacity: 0;
+    visibility: hidden;
 }

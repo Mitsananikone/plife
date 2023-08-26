@@ -4,8 +4,8 @@ import ProcedurePage from './procedures/surgeryMovingHighlight';
 import TreatmentCard from '@/components/treatmentCard/treatmentCard';
 import ProcedureTypes from './procedures/menu/procedureTypes';
 import CosmeticSurgeryPage from './resources/pop_cosmeticsurgery/popup_allSurgeries';
-import CosmeticSurgeryCard from '@/components/cosmeticSurgery/cosmeticSurgeryCard';
-import BreastImplantInfo from '@/components/cosmeticSurgery/breastImplant/breastImplant';
+import CosmeticSurgeryCard from '@/components/cosmeticSurgeryInfo/cosmeticSurgeryCard';
+import BreastImplantInfo from '@/components/cosmeticSurgeryInfo/breastImplant/breastImplant';
 import LandingPopup from '@/components/landing/page';
 
 

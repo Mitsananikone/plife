@@ -3,7 +3,8 @@ import styles from './treatmentCard.module.css';
 
 const TreatmentCard = ({ imageUrl, description, style, onClick, className }) => (
     <div style={style} className={styles.tCard}>
-        <div onClick={onClick} className={className}>
+        {/* <div style={style} className={`${styles.tCard} ${className}`}> */}
+        <div onClick={onClick}>
             <div className={styles.imgContainer}>
                 <img
                     src={imageUrl}

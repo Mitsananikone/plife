@@ -11,11 +11,10 @@
     cursor: pointer;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     opacity: 0.7;
-    display: flex-box;
     align-items: center;
     justify-content: center;
     font-size:1em;
-    width: calc(25% - 1em); /* 25% for 4 cards in a row, subtracting margin */
+    width: calc(20% - 1em); /* 25% for 4 cards in a row, subtracting margin */
     margin: 0.5em;
 
 
@@ -69,33 +68,44 @@
     transition-duration: 300ms;
 }
 
-@media screen and (min-width: 1025px){
+@media screen and (min-width: 1201px) {
     .tCardTitle > p {
-        font-size: 0.6em; /* Resetting to default, as 0.8em is already set outside the media query */
+        font-size: 1em;
     }
-
+    .tCard {
+        /* border: 1px solid red; */
+        margin-bottom: 4em;
+    }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .tCardTitle > p {
+        font-size: 0.65em;
+    }
+    .tCard {
+        /* border: 1px solid red; */
+        margin-bottom: 4em;
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .tCardTitle > p {
-        font-size: 0.6em; /* Resetting to default, as 0.8em is already set outside the media query */
+        font-size: 0.6em;
     }
     .tCard {
+        scale: 1.2;
         margin-bottom: 4em;
-        width: 33vw;
     }
-
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
     .tCardTitle > p {
-        font-size: 0.45em; /* Making it a bit smaller for medium screens */
+        font-size: 0.45em;
     }
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
     .tCardTitle > p {
-        font-size: 0.3em; /* Even smaller for small screens */
+        font-size: 0.3em;
     }
     .tCard {
         margin-bottom: 4em;
@@ -105,6 +115,6 @@
 
 @media screen and (max-width: 320px) {
     .tCardTitle > p {
-        font-size: 0.6em; /* Smallest for very small screens */
+        font-size: 0.6em;
     }
 }

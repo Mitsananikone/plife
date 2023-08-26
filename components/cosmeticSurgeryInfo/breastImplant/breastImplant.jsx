@@ -14,7 +14,7 @@ export default function BreastImplantInfo() {
             Cosmetic Surgery Breast Enlargement
           </h2>
 
-          <p className="text-m flex-wrap">
+          <span className="text-m flex-wrap">
             Cosmetic surgery breast enhancement (augmentation) is usually done
             to enhance the size or shape of breasts or to balance a difference
             in breast size. The procedure is performed by inserting a breast
@@ -24,34 +24,32 @@ export default function BreastImplantInfo() {
             different <b>positions</b> through a variety of{" "}
             <b>incision locations</b>. The goal is to leave your breasts looking
             as natural as possible while enlarging them to your desired size.
-          </p>
+          </span>
           <br />
-          <p className="text-m flex-wrap">
+          <span className="text-m flex-wrap">
             The surgeon may recomment that a <b>breast lift</b> and breast
             augmentation be performed at the same time. This is mostly commonly
             recommended to treat the sagging appearance that results from aging
             or pregnancy. DUring this combined procedure, some breast tissue is
             removed, the breast skin is tightened and lifted, and an implant is
             inserted.
-          </p>
+          </span>
 
-          <div className="flex flex-row justify-items-end space-x-10 mt-8 ">
-            {" "}
-            {/* Flex container for cards */}
+          <div className="flex flex-row justify-items space-x-32 mt-8 ">
+    
             <TreatmentCard
-              style={{ transform: "scale(0.8)" }}
               imageUrl="/images/info/implant1.PNG"
               description="
           Incisions are made to keep scards as inconspicuous as possible, under the breast, around the nipple, or in the armpit.  Breast tissue and skin is lifted to create a pocket for each implant."
             />
             <TreatmentCard
-              style={{ transform: "scale(0.8)" }}
+             
               imageUrl="/images/info/implant2.PNG"
               description="
           The breast implant may be inserted directly under the breast tissue, partially or completely beneath the pectoral muscle."
             />
             <TreatmentCard
-              style={{ transform: "scale(0.8)" }}
+
               imageUrl="/images/info/implant3.PNG"
               description="
           After surgery, breasts appear fuller and more natural in tone and contour.  Scars will fade with time."
@@ -59,12 +57,12 @@ export default function BreastImplantInfo() {
           </div>
           </section>
 
-          <section id="BreastEnlargement2">
+          <section id="BreastEnlargement2" style={{marginTop: '2em'}}>
           <span className="font-bold text-xl mt-12">
             Cosmetic Surgery Breast Enlargement
           </span>
 
-          <p className="text-m flex-wrap">
+          <span className="text-m flex-wrap">
             Cosmetic surgery breast enlargement is a very popular procedure that
             can be extremely satisfying. It is a permanent improvement to breast
             shape and size, commonly chosen in women who are not satisfied with
@@ -73,30 +71,30 @@ export default function BreastImplantInfo() {
             <br />
             Generally, most patientsbenefit by having major boosts in their
             self-confidence, and femininity.
-          </p>
+          </span>
           <br/>
 
           </section>
 
-          <section id="BreastEnlargement3">
+          <section id="BreastEnlargement3" style={{marginTop: '2em'}}>
           <span className="font-bold text-xl mt-12">
             {" "}
             Best candidates for breast enlargement
           </span>
 
-          <p className="text-m flex-wrap">
+          <span className="text-m flex-wrap">
             The best candidates for breast surgery are women who are emotionally
             well-adjusted and who have a through understanding of the procedure.
             They are in good health, have a history of physical activity, and
             eat a healthy diet.
-          </p>
+          </span>
           <br/>
           </section>
 
-          <section id="BreastEnlargement4">
+          <section id="BreastEnlargement4" style={{marginTop: '2em'}}>
           <span className="font-bold text-xl mt-12"> Surgical procedure</span>
 
-          <p className="text-m flex-wrap">
+          <span className="text-m flex-wrap">
             The operation is carried out under general anesthetic, and requires
             an overnight stay. Where the implents are placed depends on your
             preference and the surgeon&apos;s recommendations. Our surgeons
@@ -110,39 +108,39 @@ export default function BreastImplantInfo() {
             The 4 different incisions:
             <br />
             <br />
-            {/* <ul className="custom-bullet-list">
+            <ul className="custom-bullet-list">
               <li>Under the breast (inframammary incision)</li>
               <li>Around the nipple (peri-areolar incision)</li>
               <li>In the arm pit (transaxillary incision)</li>
               <li>In the naval area (trans-umbilical or TUBA incision)</li>
-            </ul> */}
+            </ul>
             <br />
             <br />
             The 3 positions for implant placement
             <br />
             <br />
-            {/* <ul className="custom-bullet-list">
+            <ul className="custom-bullet-list">
               <li>Above the pectoral muscles (sub-glandular)</li>
               <li>*duplicate* Above the pectoral muscles (sub-glandular)</li>
               <li>Completely behind the muscles (complete sub-muscular)</li>
-            </ul> */}
-            </p>
+            </ul>
+            </span>
 
 </section>
 
-            <section id="BreastEnlargement5">
+            <section id="BreastEnlargement5" style={{marginTop: '2em'}}>
             <span className="font-bold text-xl mt-12"> Incisions</span>
             <span className="font-bold font-italic">
-              {" "}
+ 
               Under the breast (inframammary incision)
             </span>
             The inframammary incision is placed in the proximity of the crease
             where the breast and chest come together. This crease is *missing*
             </section>
 
-            <section id="BreastEnlargement6">
+            <section id="BreastEnlargement6" style={{marginTop: '2em'}}>
             <h2 className="font-bold text-xl mt-12">
-              {" "}
+
               Benefits of breast enlargement
             </h2>
             Cosmetic surgery breast enlargement is a very popular procedure that
@@ -157,16 +155,16 @@ export default function BreastImplantInfo() {
               {" "}
               Best candidates for breast enlargement
             </h2>
-            <p>
+            <span>
             The best candidates for breasdt surgery are women who are
             emotionally well adjusted and who have a thorough understanding of
             the procedure. They are in good health, have a history of physical
             activity, and eat a healthy diet. Breast surgery is a good *missing*
-          </p>
+          </span>
           <br />
           <br />
           </section>
-          <ConsultationForm style={{ paddingBottom: "32px" }} />
+          <ConsultationForm style={{ paddingTop: "32px", paddingBottom: "32px" }} />
         </div>
       </div>
     </div>

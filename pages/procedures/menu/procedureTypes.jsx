@@ -3,79 +3,87 @@
 import React, { useState, useEffect } from "react";
 import TreatmentCard from "@/components/treatmentCard/treatmentCard";
 import styles from "./procedureTypes.module.css";
-import CosmeticSurgeryCard from '@/components/cosmeticSurgeryInfo/cosmeticSurgeryCard';
-import PopupAllSurgeries from '@/pages/resources/pop_cosmeticsurgery/popup_allSurgeries';
+import CosmeticSurgeryCard from "@/components/cosmeticSurgeryInfo/cosmeticSurgeryCard";
+import PopupAllSurgeries from "@/pages/resources/pop_cosmeticsurgery/popup_allSurgeries";
 
 export default function ProcedureTypes() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [selectedProcedure, setSelectedProcedure] = useState(null);
 
-  const handleCardClick = () => {
+  const handleClick = (procedureType) => {
+    console.log("Clicked on:", procedureType);
+    setSelectedProcedure(procedureType);
     setIsPopupVisible(true);
-  };
+};
 
   const closePopup = () => {
     setIsPopupVisible(false);
   };
+
   return (
     <div className={styles.procedureContainer}>
       <h1>VIEW PROCEDURES AND ProcedureTypes</h1>
       <div className={styles.bothGroups}>
         <div className={styles.tCardGroup1}>
           <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/aesthetic.PNG"
-            description="AESTHETIC & NON-SURGICAL"
-            className={styles.tCard}
+            onClick={() => handleClick("breastImplant")}
+            imageUrl="/images/types/breastImplant.png"
+            description="BREAST IMPLANT"
+            // className={styles.tCard}
           />
           <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/weightloss.PNG"
-            description="WEIGHT LOSS"
-            className={styles.tCard}
+             onClick={() => handleClick("breastLift")}
+            imageUrl="/images/types/breastLift.png"
+            description="BREAST LIFT"
+            // className={styles.tCard}
           />
           <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/cosmeticsurgery.PNG"
-            description="COSMETIC SURGERY"
-            className={styles.tCard}
+             onClick={() => handleClick("breastReduction")}
+            imageUrl="/images/types/breastReduction.png"
+            description="BREAST REDUCTION"
+            // className={styles.tCard}
           />
           <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/gyno.PNG"
-            description="COSMETIC GYNECOLOGY"
-            className={styles.tCard}
+             onClick={() => handleClick("faceLift")}
+            imageUrl="/images/types/faceLift.png"
+            description="FACE LIFT"
+            // className={styles.tCard}
           />
         </div>
         <div className={styles.tCardGroup2}>
           <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/dental.PNG"
-            description="DENTAL ProcedureTypes"
-            className={styles.tCard}
-          />
-          <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/trans.PNG"
-            description="GENDER TRANSITION"
-            className={styles.tCard}
-          />
-          <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/lipo.PNG"
+             onClick={() => handleClick("liposuction")}
+            imageUrl="/images/types/liposuction.png"
             description="LIPOSUCTION"
-            className={styles.tCard}
+            // className={styles.tCard}
           />
           <TreatmentCard
-          onClick={handleCardClick}
-            imageUrl="/images/types/hair.PNG"
-            description="HAIR TRANSFORMATION"
-            className={styles.tCard}
+             onClick={() => handleClick("trans")}
+            imageUrl="/images/types/trans.png"
+            description="GENDER TRANSITION"
+            // className={styles.tCard}
+          />
+          <TreatmentCard
+             onClick={() => handleClick("rhinoplasty")}
+            imageUrl="/images/types/rhinoplasty.png"
+            description="RHINOPLASTY"
+            // className={styles.tCard}
+          />
+          <TreatmentCard
+             onClick={() => handleClick("tummyTuck")}
+            imageUrl="/images/types/tummyTuck.png"
+            description="TUMMY TUCK"
+            // className={styles.tCard}
           />
         </div>
       </div>
-      {isPopupVisible && (
-        <PopupAllSurgeries onClose={closePopup} />
-      )}
+      {console.log("isPopupVisible: " + isPopupVisible)}
+
+      <PopupAllSurgeries
+    isPopupVisible={isPopupVisible}
+    onClose={() => setIsPopupVisible(false)}
+    selectedProcedure={selectedProcedure}
+/>
     </div>
   );
 }

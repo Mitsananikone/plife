@@ -4,8 +4,9 @@
     align-items: center;
     width: 100vw;
     background-color: #E5E7EB;
-    height: 100vh;
+    height: max-content;
     padding: 1rem 1rem 0 1rem;
+    overflow: hidden;
 }
 
 .procedureContainer>h1 {
@@ -187,52 +188,36 @@
     }
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+@media screen and (min-width: 1025px) and (max-width: 1499px) {
     .procedureContainer {
-        flex-direction: column;  
+        flex-direction: column;
         padding: 2em;
-        height: max-content;
+        height: 100vh;
     }
-
-    .procedureContainer>h1 {
-        color: yellow;
-    }
-
-    .tCardGroup1, .tCardGroup2 {
-        margin-top: 4em;
-        flex-basis: 33%; 
-        flex-direction: row; 
-        align-items: center;
-        padding: 2em;
-    }
-}
-
-@media screen and (min-width: 1025px) and (max-width: 1200px) {
-    .procedureContainer {
-        display: flex;            
-        flex-direction: row;      
-        align-items: flex-start;  
-        justify-content: center;  
-        flex-wrap: wrap;        
-        border: 1px solid blue;  
-    }
-
+    
     .procedureContainer>h1 {
         color: orange;
     }
-
+    
     .tCardGroup1, .tCardGroup2 {
-        flex-basis: 50%;          
-        margin: 1%;               
-        flex-direction: column;   
-        display: flex;            
-        justify-content: space-between; 
-        align-content: stretch;   
-        align-items: center;      
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%; /* Taking full width of the container */
+        /* margin-top: 4em; */
+        align-items: center;
+        padding: 2em;
+    }
+
+    .tCardGroup1 > .tCard, .tCardGroup2 > .tCard {
+        flex-basis: 33%;
+        box-sizing: border-box; /* To include padding and borders in the width */
+        /* You might need additional adjustments here based on padding, margins, etc. of cards */
     }
 }
 
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1500px) {
     .procedureContainer {
         flex-direction: column;
         padding: 2em;
