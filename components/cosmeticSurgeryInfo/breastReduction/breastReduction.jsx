@@ -1,91 +1,221 @@
 /** @format */
-import TreatmentCard from "@/components/treatmentCard/treatmentCard";
+
+import React, { useState, useRef, useEffect } from "react";
+import InfoCard from "@/components/infoCard/infoCard";
 import ConsultationForm from "@/components/consultForm/consultForm";
+import styles from "@/components/infoCard/infoCard.module.css";
+import popupStyles from "@/pages/resources/pop_cosmeticsurgery/popup_allSurgeries.module.css";
+import { CSSTransition } from "react-transition-group";
 
-export default function BreastReductionInfo() {
+
+export const BreastReductionInfo = React.forwardRef((props) => {
+  BreastReductionInfo.displayName = 'BreastReductionInfo';
+  const { onClose } = props;
+  const [showFirstSection, setShowFirstSection] = useState(false);
+  const [showSecondSection, setShowSecondSection] = useState(false);
+  const [showThirdSection, setShowThirdSection] = useState(false);
+  const [showFourthSection, setShowFourthSection] = useState(false);
+  const breastReductionPopupRef = useRef(null);
+  const refsArray = [useRef(null), useRef(null), useRef(null), useRef(null)];
+
+  const popupHeight = breastReductionPopupRef.current ? breastReductionPopupRef.current.offsetHeight : 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      refsArray.forEach((ref, index) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const isPartiallyVisible = rect.top < popupHeight && rect.bottom > 0;
+
+          switch (index) {
+            case 0:
+              setShowFirstSection(isPartiallyVisible);
+              break;
+            case 1:
+              setShowSecondSection(isPartiallyVisible);
+              break;
+            case 2:
+              setShowThirdSection(isPartiallyVisible);
+              break;
+            case 3:
+              setShowFourthSection(isPartiallyVisible);
+              break;
+            default:
+              break;
+          }
+        }
+      });
+    };
+
+    if (breastReductionPopupRef.current) {
+      breastReductionPopupRef.current.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (breastReductionPopupRef.current) {
+        breastReductionPopupRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [breastReductionPopupRef, refsArray, popupHeight]);
+
+  useEffect(() => {
+    if (onClose) {
+      onClose();
+    }
+  }, [onClose]);
+
   return (
-    <div className="overscroll-y-auto flex h-screen bg-transparent p-0 w-full  ">
-      <div className="flex h-screen bg-white pl-16 w-full pr-16">
-        <div className="bg-transparent p-10 px-0 2 ">
-          
-          <section id="breastReduction1">
-            <h2 className="font-bold text-xl">Cosmetic Surgery Breast Reduction</h2>
-            <span className="text-m flex-wrap">
-              Cosmetic surgery breast reduction, medically known as reduction mammoplasty, is a procedure to remove excess breast fat, glandular tissue, and skin to achieve a breast size that is proportionate with your body. It can also alleviate the discomfort associated with overly large breasts such as neck pain, back pain, and skin irritation.
-            </span>
-            <br />
-            <span className="text-m flex-wrap">
-              Apart from the physical relief, many patients also experience a significant enhancement in their self-esteem and find a greater ease in physical activity and bra fitting.
-            </span>
-            <div className="flex flex-row justify-items space-x-32 mt-8 ">
-              <TreatmentCard
-                imageUrl="/images/info/reduction1.PNG"
-                description="Initial markings are done, indicating the areas of tissue removal and new nipple position."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/reduction2.PNG"
-                description="Excess tissue and skin are removed. The breast is then reshaped and the nipple is repositioned to a natural height."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/reduction3.PNG"
-                description="Post-surgery, breasts appear proportional to the body structure. Scars will gradually fade over time."
-              />
+    <div className={popupStyles.popupContainer} ref={breastReductionPopupRef}>
+    <div className="flex w-full">
+      <div className={popupStyles.popup_Info}>
+        <CSSTransition
+          in={showFirstSection}
+          timeout={1000}
+          classNames="fade"
+          unmountOnExit={false}
+        >
+          <div 
+            ref={refsArray[0]} 
+            className={popupStyles.motion}
+          >
+  <h2 className="font-bold text-xl">
+        Cosmetic Surgery Breast Reduction
+      </h2>
+
+      <span className="text-m flex-wrap">
+        <br />
+        Cosmetic surgery for breast reduction, technically known as reduction mammaplasty, is a procedure to remove excess breast fat, glandular tissue, and skin. This brings comfort and proportion to a woman&apos;s body, alleviating the discomfort associated with overly large breasts.
+      </span>
+      <br />
+      <span className="text-m flex-wrap">
+        Disproportionately large breasts can lead to both health and emotional challenges. They can create self-image concerns and physical pain. Through breast reduction, one can achieve a breast size that aligns with their body structure.
+      </span>
+
+      <div className={styles.iCardContainer}>
+        <InfoCard
+          imageUrl="/images/info/reduction1.png"
+          description="
+            The procedure aims at achieving a proportional breast size, enhancing overall body contour."
+        />
+        <InfoCard
+          imageUrl="/images/info/reduction2.png"
+          description="
+            Besides aesthetic enhancement, it can significantly improve physical ailments like neck or back pain."
+        />
+        <InfoCard
+          imageUrl="/images/info/reduction3.png"
+          description="
+            Post-surgery, patients often report immediate relief and a surge in self-confidence."
+        />
+      </div>
+      </div>
+          </CSSTransition>
+
+          <CSSTransition
+            in={showSecondSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div 
+              ref={refsArray[1]} 
+              className={popupStyles.motion}
+            >
+              <h2 className="font-bold text-xl mt-12">
+              The Appeal of Breast Reductions
+      </h2>
+
+      <span className="text-m flex-wrap">
+        Opting for a breast reduction is often a health-focused decision. Overly large breasts can strain the back and shoulders, leading to chronic pain. Moreover, it aligns the body&apos;s proportions, boosting one&apos;s self-confidence and body image.
+      </span>
+      <br />
+
+      <h2 className="font-bold text-xl mt-12">
+        Best Candidates for a Breast Reduction
+      </h2>
+
+      <span className="text-m flex-wrap">
+        Ideal candidates for breast reductions are those who face physical discomfort or emotional distress due to their large breast size. It&apos;s vital for them to be in good health, have a clear understanding of the procedure, and hold realistic expectations about the results.
+      </span>
+      <br />
+
+      <h2 className="font-bold text-xl mt-12">
+        The Surgical Procedure
+      </h2>
+
+      <span className="text-m flex-wrap">
+        The surgery takes around 2-3 hours and can be done under general anesthesia. The surgeon removes excess fat, tissue, and skin, and repositions the nipple if necessary. Incisions can vary, and the best method will depend on individual cases and the surgeon&apos;s recommendation.
+      <br />
+      <br />
+      <ul className="custom-bullet-list">
+  <li>Encircling the areola (periareolar incision)</li>
+  <li>Encircling the areola and vertically down to the breast fold (vertical or lollipop incision)</li>
+  <li>Encircling the areola, vertically down to the breast fold, and then horizontally along the fold (inverted-T or anchor incision)</li>
+</ul>
+</span>
             </div>
-          </section>
+          </CSSTransition>
 
-          <section id="BreastReduction2" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
-              Importance of Breast Reduction
-            </span>
-            <span className="text-m flex-wrap">
-              Reduction mammoplasty isn&apos;t just about aesthetics. It&apos;s a functional procedure that can significantly improve quality of life, allowing individuals to engage in activities without the discomfort or self-consciousness that can come with having overly large breasts.
-            </span>
-            <br/>
-          </section>
+          <CSSTransition
+  in={showThirdSection}
+  timeout={1000}
+  classNames="fade"
+  unmountOnExit={false}
+>
+  <div 
+    ref={refsArray[2]} 
+    className={popupStyles.motion}
+  >
+    <h2 className="font-bold text-xl mt-12"> Recovery and Results </h2>
 
-          <section id="BreastReduction3" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
-              Ideal Candidates for Breast Reduction
-            </span>
-            <span className="text-m flex-wrap">
-              Ideal candidates for breast reduction are those who experience physical symptoms resulting from the weight of their breasts, such as back, neck, or shoulder pain. Good candidates should be generally healthy, non-smokers, and should have realistic expectations regarding the outcome of the surgery.
-            </span>
-            <br/>
-          </section>
+    <span className="text-m flex-wrap">
+      Recovery from a breast reduction varies from patient to patient, but most can expect mild discomfort, swelling, and bruising initially. The alleviation of back and neck pain can be felt almost immediately for many, and scars, although present, will fade over time, becoming less noticeable.
+    </span>
 
-          <section id="BreastReduction4" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12"> Surgical Procedure</span>
-            <span className="text-m flex-wrap">
-              The procedure is performed under general anesthesia. Incision patterns vary based on the specific needs and desired results of the patient, but often include incisions around the areola, vertically down from the areola to the breast crease, and horizontally along the breast crease.
-            </span>
-            <br />
-            <br />
-            Common incision options include:
-            <br />
-            <br />
-            <ul className="custom-bullet-list">
-              <li>Circle around the areola (peri-areolar)</li>
-              <li>Keyhole or racquet-shaped, around the areola and vertically down</li>
-              <li>Anchor-shaped, combining the keyhole with a horizontal incision along the breast crease</li>
-            </ul>
-            <br />
-            <br />
-          </section>
+    <h2 className="font-bold text-xl mt-12">
+      Benefits of a Breast Reduction
+    </h2>
+    <span>
+      Alleviating physical discomfort, enhancing breast symmetry, achieving a proportionate breast size to the body, and improving the ability to engage in physical activities are some of the primary benefits of a breast reduction.
+    </span>
+    <br />
 
-          <section id="BreastReduction5" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12"> Benefits of a Breast Reduction</span>
-            <span className="text-m flex-wrap">
-              A breast reduction can offer enhanced comfort, relief from physical pain, and a more proportionate silhouette. It can improve physical and mental well-being, increase activity levels, and widen clothing options.
-            </span>
-            <br />
-            <span className="text-m flex-wrap">
-              Beyond the physical benefits, many individuals experience a psychological uplift, reporting increased self-confidence and a renewed sense of freedom post-surgery.
-            </span>
-          </section>
+    <h2 className="font-bold text-xl mt-12">
+      Potential Risks
+    </h2>
 
-          <ConsultationForm style={{ paddingTop: "32px", paddingBottom: "32px" }} />
-        </div>
+    <span className="text-m flex-wrap">
+      As with any surgery, there are risks involved, including infection, poor scarring, asymmetry, changes in nipple or breast sensation, and complications related to anesthesia. It&apos;s essential to discuss these risks with your surgeon during the consultation.
+    </span>
+  </div>
+</CSSTransition>
+
+<CSSTransition
+  in={showFourthSection}
+  timeout={1000}
+  classNames="fade"
+  unmountOnExit={false}
+>
+  <div 
+    ref={refsArray[3]} 
+    className={popupStyles.motion}
+  >
+    <h2 className="font-bold text-xl mt-12">
+      Schedule a Consultation
+    </h2>
+
+    <span className="text-m flex-wrap">
+      Are you considering a breast reduction? It&apos;s crucial to consult with a board-certified plastic surgeon to understand the procedure, its benefits, and determine if it&apos;s the right choice for you.
+    </span>
+    <br />
+
+    <ConsultationForm />
+  </div>
+</CSSTransition>
+</div>
       </div>
     </div>
-  );
-}
+      );
+  });
+
+  export default BreastReductionInfo;

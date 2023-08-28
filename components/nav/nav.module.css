@@ -111,13 +111,13 @@
     justify-content: center;
     align-items: center;
   
-    span {
+    /* span {
       font-size: 5.6rem;
       text-align: center;
       line-height: 1;
       color: #c6e2ff;
       animation: neon .08s ease-in-out infinite alternate;
-    }
+    } */
   }
 
   

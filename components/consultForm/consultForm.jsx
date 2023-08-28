@@ -2,8 +2,18 @@
 import React, { useState } from 'react';
 export default function ConsultationForm(style) {
   const [selectedCountry, setSelectedCountry] = useState("Germany");
+  const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowPopup(true); // Show the popup
+
+    setTimeout(() => {
+      setShowPopup(false); // Hide the popup after 3 seconds
+    }, 3000);
+  };
   return (
-    <form className="space-y-4" style={style}>
+    <form className="space-y-4 mt-16" style={style}>
       <div className="flex space-x-4 ">
         <div className="w-1/2">
           <label htmlFor="firstName">
@@ -115,9 +125,18 @@ export default function ConsultationForm(style) {
         </label>
       </div>
 
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+          <div className="bg-gray-400 p-4 rounded shadow-lg">
+            Your request has been received. We will contact you shortly.
+          </div>
+        </div>
+      )}
+
       <button
-        className="bg-gray-300 opacity-60 text-black font-bold py-2 px-4 rounded whitespace-nowrap h-16 shadow-lg hover:shadow-xl transition-all my-8 w-64 hover:text-white mb-32"
-        style={{ borderRadius: "4px" }}
+        className="bg-gray-600 opacity-60 text-black font-bold py-2 px-4 rounded whitespace-nowrap h-16 shadow-lg hover:shadow-xl hover:opacity-90 transition-all my-8 w-64 hover:text-white mb-32"
+        type="submit"
+        onClick={handleSubmit} 
       >
         SUBMIT
       </button>

@@ -10,8 +10,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* this ensures smooth transition */
+    z-index: 99999999;
+    transition: opacity 1s ease, visibility 1s ease;
+    /* this ensures smooth transition */
     opacity: 1;
     visibility: visible;
     /* Setting a high z-index to ensure it's above other content */
@@ -20,20 +21,32 @@
 .popupContainer {
     position: relative;
     width: 90%;
-    height: 90%;
-    background-color: white;
+    height: 110vh;
+    /* background-color: white; */
     padding: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     background-color: transparent;
+    height: 90vh;
+    /* overflow-y: auto; */
+    /* border: 1px solid gray; */
 }
+
+.popupInner {
+    padding: 0.5em;
+    padding-inline: 0;
+}
+
+.motion {
+    width: 100%;
+}
+
 
 .closePopup {
     position: absolute;
     /* Changed from relative to absolute */
     top: 40px;
-    ;
     /* Set the distance from the top edge */
     right: 0;
     /* Set the distance from the right edge */
@@ -49,26 +62,46 @@
 
 .popup_navMenu {
     margin-top: 4em;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     width: 35%;
     z-index: 1;
 }
 
 .popup_info {
+    border: 1px solid orange;
     position: relative;
     /* Allows for the positioning of child pseudo-elements */
-    margin-top: 4em;
+    margin-top: 5em;
     padding-top: 6em;
     /* increased padding to account for gradient height */
-    padding-bottom: 6em;
+    padding-bottom: 3em;
     /* same as above */
-    width: 65%;
+    width: 70%;
     overflow-Y: auto;
-    z-index: 9999;
+    z-index: 999999;
     /* border: 1px solid yellow; */
+    height: 85%;;
 }
 
 .popupContainerHidden {
     opacity: 0;
     visibility: hidden;
+}
+
+.fade-enter {
+    opacity: 0.5;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0.5;
+    transition: opacity 1s;
 }

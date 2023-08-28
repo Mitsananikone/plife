@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import TreatmentCard from "@/components/treatmentCard/treatmentCard";
 import styles from "./procedureTypes.module.css";
-import CosmeticSurgeryCard from "@/components/cosmeticSurgeryInfo/cosmeticSurgeryCard";
 import PopupAllSurgeries from "@/pages/resources/pop_cosmeticsurgery/popup_allSurgeries";
 
 export default function ProcedureTypes() {
@@ -80,6 +79,7 @@ export default function ProcedureTypes() {
       {console.log("isPopupVisible: " + isPopupVisible)}
 
       <PopupAllSurgeries
+    className={isPopupVisible ? "popup visible" : "popup"}
     isPopupVisible={isPopupVisible}
     onClose={() => setIsPopupVisible(false)}
     selectedProcedure={selectedProcedure}

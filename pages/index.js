@@ -7,7 +7,7 @@ import CosmeticSurgeryPage from './resources/pop_cosmeticsurgery/popup_allSurger
 import CosmeticSurgeryCard from '@/components/cosmeticSurgeryInfo/cosmeticSurgeryCard';
 import BreastImplantInfo from '@/components/cosmeticSurgeryInfo/breastImplant/breastImplant';
 import LandingPopup from '@/components/landing/page';
-
+import MotionTest from '@/components/motionTest';
 
 export default function Home() {
     return (
@@ -18,8 +18,8 @@ export default function Home() {
             {/* <ProcedureTypes/> */}
             {/* <CosmeticSurgeryPage/>
 <BreastImplantInfo/> */}
-            
-            <LandingPage />
+            <MotionTest/>
+            {/* <LandingPage /> */}
      
             {/* <AboutPage/>
             <ProcedurePage/> */}

@@ -1,91 +1,215 @@
 /** @format */
-import TreatmentCard from "@/components/treatmentCard/treatmentCard";
+
+import React, { useState, useRef, useEffect } from "react";
+import InfoCard from "@/components/infoCard/infoCard";
 import ConsultationForm from "@/components/consultForm/consultForm";
+import styles from "@/components/infoCard/infoCard.module.css";
+import popupStyles from "@/pages/resources/pop_cosmeticsurgery/popup_allSurgeries.module.css";
+import { CSSTransition } from "react-transition-group";
 
-export default function LiposuctionInfo() {
+export const LiposuctionInfo = React.forwardRef((props) => {
+  LiposuctionInfo.displayName = "LiposuctionInfo";
+  const { onClose } = props;
+  const [showFirstSection, setShowFirstSection] = useState(false);
+  const [showSecondSection, setShowSecondSection] = useState(false);
+  const [showThirdSection, setShowThirdSection] = useState(false);
+  const [showFourthSection, setShowFourthSection] = useState(false);
+  const liposuctionPopupRef = useRef(null);
+  const refsArray = [useRef(null), useRef(null), useRef(null), useRef(null)];
+
+  const popupHeight = liposuctionPopupRef.current
+    ? liposuctionPopupRef.current.offsetHeight
+    : 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      refsArray.forEach((ref, index) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const isPartiallyVisible = rect.top < popupHeight && rect.bottom > 0;
+
+          switch (index) {
+            case 0:
+              setShowFirstSection(isPartiallyVisible);
+              break;
+            case 1:
+              setShowSecondSection(isPartiallyVisible);
+              break;
+            case 2:
+              setShowThirdSection(isPartiallyVisible);
+              break;
+            case 3:
+              setShowFourthSection(isPartiallyVisible);
+              break;
+            default:
+              break;
+          }
+        }
+      });
+    };
+
+    if (liposuctionPopupRef.current) {
+      liposuctionPopupRef.current.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (liposuctionPopupRef.current) {
+        liposuctionPopupRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [liposuctionPopupRef, refsArray, popupHeight]);
+
+  useEffect(() => {
+    if (onClose) {
+      onClose();
+    }
+  }, [onClose]);
+
   return (
-    <div className="overscroll-y-auto flex h-screen bg-transparent p-0 w-full  ">
-      <div className="flex h-screen bg-white pl-16 w-full pr-16">
-        <div className="bg-transparent p-10 px-0 2 ">
-          
-          <section id="liposuction1">
-            <h2 className="font-bold text-xl">Cosmetic Surgery Liposuction</h2>
-            <span className="text-m flex-wrap">
-              Liposuction is a cosmetic procedure used to remove unwanted body fat. The technique works by targeting and breaking down fatty deposits under the skin, followed by their removal through a suction mechanism.
-            </span>
-            <br />
-            <span className="text-m flex-wrap">
-              This procedure is particularly effective in areas like the abdomen, thighs, buttocks, neck, and arms. Liposuction aims to reshape specific areas of the body, providing a smoother, more contoured appearance.
-            </span>
-            <div className="flex flex-row justify-items space-x-32 mt-8 ">
-              <TreatmentCard
-                imageUrl="/images/info/lipo1.PNG"
-                description="Incisions are made in discreet locations on the body. A cannula is then introduced to loosen the fat."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/lipo2.PNG"
-                description="The dislodged fat is then suctioned out of the body using a surgical vacuum or syringe."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/lipo3.PNG"
-                description="After surgery, the treated areas appear smoother and more contoured. Compression garments are often worn to reduce swelling."
-              />
+    <div className={popupStyles.popupContainer} ref={liposuctionPopupRef}>
+      <div className="flex w-full">
+        <div className={popupStyles.popup_Info}>
+          <CSSTransition
+            in={showFirstSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[0]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl"> Cosmetic Surgery Liposuction</h2>
+
+              <span className="text-m flex-wrap">
+                <br />A liposuction, technically known as rhytidectomy, is a
+                surgical procedure designed to smooth and tighten the skin of
+                the face and neck. It provides rejuvenation to counteract the
+                effects of aging, gravity, and sun exposure.
+              </span>
+              <br />
+              <span className="text-m flex-wrap">
+              Over time, some areas of the body can accumulate fat that doesn&apos;t easily go away with traditional weight loss methods. Liposuction aims to sculpt and reshape these areas, providing a more contoured appearance.
+              </span>
+
+              <div className={styles.iCardContainer}>
+                <InfoCard
+                   imageUrl="/images/info/lipo1.png"
+                   description="The procedure is a cosmetic solution for localized fat deposits, offering enhanced body contours."
+                />
+                <InfoCard
+                   imageUrl="/images/info/lipo2.png"
+                   description="It's not a weight-loss method but rather a body contouring technique."
+
+                />
+                <InfoCard
+                   imageUrl="/images/info/lipo3.png"
+                   description="Post-surgery, patients often feel more confident in their body and clothing fit better."
+
+                />
+              </div>
             </div>
-          </section>
+          </CSSTransition>
 
-          <section id="Liposuction2" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
-              Why Consider Liposuction?
-            </span>
-            <span className="text-m flex-wrap">
-              Liposuction is beneficial for those who have stubborn fat deposits that are resistant to diet and exercise. It&apos;s a means to shape and contour the body, enhancing one&apos;s physical appearance and boosting self-confidence.
-            </span>
-            <br/>
-          </section>
+          <CSSTransition
+            in={showSecondSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[1]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl mt-12">
+                The Appeal of Liposuction
+              </h2>
 
-          <section id="Liposuction3" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
-              Ideal Candidates for Liposuction
-            </span>
-            <span className="text-m flex-wrap">
-              The best candidates for liposuction are individuals close to their ideal weight but with localized fat deposits that are unresponsive to diet and exercise. Good skin elasticity and muscle tone are also beneficial for optimal results.
-            </span>
-            <br/>
-          </section>
+              <span className="text-m flex-wrap">
+              Liposuction offers immediate and impactful results. It provides a solution for those stubborn areas that don&apos;t seem to change regardless of diet and exercise. The procedure refines body contours, enhancing one&apos;s physical appearance and self-esteem.
 
-          <section id="Liposuction4" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12"> Surgical Procedure</span>
-            <span className="text-m flex-wrap">
-              The liposuction procedure begins with small incisions made in the targeted area. A diluted local anesthetic is infused to reduce bleeding and trauma. A thin hollow tube called a cannula is then inserted through these incisions to loosen the fat using a controlled back and forth motion. The dislodged fat is then suctioned out of the body.
-            </span>
-            <br />
-            <br />
-            Types of liposuction include:
-            <br />
-            <br />
-            <ul className="custom-bullet-list">
-              <li>Tumescent liposuction</li>
-              <li>Ultrasound-assisted liposuction</li>
-              <li>Laser-assisted liposuction</li>
-            </ul>
-            <br />
-            <br />
-          </section>
+              </span>
+              <br />
 
-          <section id="Liposuction5" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12"> Benefits of Liposuction</span>
-            <span className="text-m flex-wrap">
-              Liposuction provides an immediate improvement in the treated areas, offering a more proportional and pleasing body contour. It helps boost self-esteem and may even offer health benefits by reducing the number of fat cells in the body.
-            </span>
-            <br />
-            <span className="text-m flex-wrap">
-              It&apos;s essential to maintain a healthy lifestyle post-procedure to ensure long-lasting results.
-            </span>
-          </section>
+              <h2 className="font-bold text-xl mt-12">
+              Best Candidates for Liposuction
+              </h2>
 
-          <ConsultationForm style={{ paddingTop: "32px", paddingBottom: "32px" }} />
+              <span className="text-m flex-wrap">
+              Ideal candidates for liposuction are those who are at or near their target weight but have localized fat deposits they wish to eliminate. It&apos;s important for candidates to have good skin elasticity, be in good overall health, and hold realistic expectations about the results.
+</span>
+        
+              <br />
+
+              <h2 className="font-bold text-xl mt-12">
+                The Surgical Procedure
+              </h2>
+
+              <span className="text-m flex-wrap">
+              The procedure involves making small incisions and inserting a thin tube called a cannula to suction out fat. There are various techniques, such as tumescent or ultrasound-assisted, that aid in breaking up the fat before it&apos;s removed.
+  <br />
+  <br />
+  <ul className="custom-bullet-list">
+    <li>Tumescent Liposuction: A solution is injected to ease fat removal.</li>
+    <li>Ultrasound-Assisted Liposuction: Uses sound waves to liquefy fat.</li>
+    <li>Laser-Assisted Liposuction: Utilizes laser energy to break up and liquefy fat.</li>
+  </ul>
+              </span>
+            </div>
+          </CSSTransition>
+
+          <CSSTransition
+            in={showThirdSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[2]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl mt-12">
+                {" "}
+                Recovery and Results{" "}
+              </h2>
+
+              <span className="text-m flex-wrap">
+              Recovery from liposuction typically involves swelling, bruising, and mild discomfort, but these symptoms gradually diminish. Compression garments are often recommended to reduce swelling and shape the treated area. The final results, revealing a more contoured body profile, can take a few weeks to months as the swelling subsides.
+              </span>
+
+              <h2 className="font-bold text-xl mt-12">
+              Benefits of Liposuction
+              </h2>
+              <span>
+              Liposuction can dramatically improve body contours, eliminate stubborn fat pockets, enhance self-confidence, and promote a more positive body image.
+
+              </span>
+              <br />
+
+              <h2 className="font-bold text-xl mt-12">Potential Risks</h2>
+
+              <span className="text-m flex-wrap">
+              As with any surgical procedure, liposuction comes with risks. These include infection, uneven contours, scarring, fluid accumulation, numbness, and complications related to anesthesia. A thorough consultation with a certified surgeon is vital to understand these risks.
+
+              </span>
+            </div>
+          </CSSTransition>
+
+          <CSSTransition
+            in={showFourthSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[3]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl mt-12">
+                Schedule a Consultation
+              </h2>
+
+              <span className="text-m flex-wrap">
+              Considering liposuction? It&apos;s crucial to consult with a board-certified plastic surgeon to delve deep into the procedure, its benefits, and to determine if it&apos;s the best fit for your goals.
+
+              </span>
+              <br />
+
+              <ConsultationForm />
+            </div>
+          </CSSTransition>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default LiposuctionInfo;

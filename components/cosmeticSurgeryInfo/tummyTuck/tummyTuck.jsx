@@ -1,68 +1,246 @@
 /** @format */
-import TreatmentCard from "@/components/treatmentCard/treatmentCard";
+
+import React, { useState, useRef, useEffect } from "react";
+import InfoCard from "@/components/infoCard/infoCard";
 import ConsultationForm from "@/components/consultForm/consultForm";
+import styles from "@/components/infoCard/infoCard.module.css";
+import popupStyles from "@/pages/resources/pop_cosmeticsurgery/popup_allSurgeries.module.css";
+import { CSSTransition } from "react-transition-group";
 
-export default function TummyTuckInfo() {
+export const TummyTuckInfo = React.forwardRef((props) => {
+  TummyTuckInfo.displayName = "TummyTuckInfo";
+  const { onClose } = props;
+  const [showFirstSection, setShowFirstSection] = useState(false);
+  const [showSecondSection, setShowSecondSection] = useState(false);
+  const [showThirdSection, setShowThirdSection] = useState(false);
+  const [showFourthSection, setShowFourthSection] = useState(false);
+  const tummyTuckPopupRef = useRef(null);
+  const refsArray = [useRef(null), useRef(null), useRef(null), useRef(null)];
+
+  const popupHeight = tummyTuckPopupRef.current
+    ? tummyTuckPopupRef.current.offsetHeight
+    : 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      refsArray.forEach((ref, index) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const isPartiallyVisible = rect.top < popupHeight && rect.bottom > 0;
+
+          switch (index) {
+            case 0:
+              setShowFirstSection(isPartiallyVisible);
+              break;
+            case 1:
+              setShowSecondSection(isPartiallyVisible);
+              break;
+            case 2:
+              setShowThirdSection(isPartiallyVisible);
+              break;
+            case 3:
+              setShowFourthSection(isPartiallyVisible);
+              break;
+            default:
+              break;
+          }
+        }
+      });
+    };
+
+    if (tummyTuckPopupRef.current) {
+      tummyTuckPopupRef.current.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (tummyTuckPopupRef.current) {
+        tummyTuckPopupRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [tummyTuckPopupRef, refsArray, popupHeight]);
+
+  useEffect(() => {
+    if (onClose) {
+      onClose();
+    }
+  }, [onClose]);
+
   return (
-    <div className="overscroll-y-auto flex h-screen bg-transparent p-0 w-full  ">
-      <div className="flex h-screen bg-white pl-16 w-full pr-16">
-        <div className="bg-transparent p-10 px-0 2 ">
+    <div className={popupStyles.popupContainer} ref={tummyTuckPopupRef}>
+      <div className="flex w-full">
+        <div className={popupStyles.popup_Info}>
+          <CSSTransition
+            in={showFirstSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[0]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl">Tummy Tuck Surgery</h2>
 
-          <section id="tummyTuck1">
-            <h2 className="font-bold text-xl">Tummy Tuck (Abdominoplasty)</h2>
-            <span className="text-m flex-wrap">
-              A tummy tuck or abdominoplasty is designed to improve the contour of the abdominal region by removing excess sagging skin and fat, and tightening the underlying abdominal muscles. This results in a firmer and flatter abdomen.
-            </span>
-            <br />
-            <span className="text-m flex-wrap">
-              The procedure is particularly popular among individuals who&apos;ve experienced significant weight loss or after pregnancy when the skin and muscles might not return to their original elasticity and firmness.
-            </span>
-            <div className="flex flex-row justify-items space-x-32 mt-8 ">
-              <TreatmentCard
-                imageUrl="/images/info/tummy1.PNG"
-                description="The surgical markings indicating areas of excess skin and fat to be removed."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/tummy2.PNG"
-                description="The underlying abdominal muscles are tightened and sutured together."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/tummy3.PNG"
-                description="After the procedure, the abdomen appears firmer, flatter, and more contoured."
-              />
+              <span className="text-m flex-wrap">
+                <br />A tummy tuck, medically known as abdominoplasty, is a surgical procedure aimed at removing excess skin and fat from the middle and lower abdomen and tightening the muscles of the abdominal wall. This surgery can greatly reduce the appearance of a protruding abdomen, offering a firmer and smoother profile.
+
+
+
+              </span>
+              <br />
+              <span className="text-m flex-wrap">
+              Tummy tucks can be especially beneficial for those who have experienced significant weight loss or post-pregnancy changes, restoring a more toned and contoured appearance to the abdomen.
+
+
+
+              </span>
+
+              <div className={styles.iCardContainer}>
+                <InfoCard
+                   imageUrl="/images/info/lipo1.png"
+                   description="The surgery can remove loose or sagging skin and repair weakened abdominal muscles."
+
+
+                />
+                <InfoCard
+                   imageUrl="/images/info/lipo2.png"
+                   description="It can be customized to meet individual needs, including mini or full abdominoplasty."
+
+
+
+
+                />
+                <InfoCard
+                   imageUrl="/images/info/lipo3.png"
+                   description="Post-surgery, patients often report heightened self-esteem and confidence in their body image."
+
+
+
+
+                />
+              </div>
             </div>
-          </section>
+          </CSSTransition>
 
-          <section id="tummyTuck2" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
+          <CSSTransition
+            in={showSecondSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[1]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl mt-12">
+              The Appeal of Tummy Tucks
+              </h2>
+
+              <span className="text-m flex-wrap">
+              Whether due to genetics, aging, pregnancy, or significant weight fluctuations, the abdomen can sometimes resist toning exercises and dieting. A tummy tuck can address these issues, providing long-lasting and transformative results.
+
+
+
+
+              </span>
+              <br />
+
+              <h2 className="font-bold text-xl mt-12">
+              Best Candidates for a Tummy Tuck
+              </h2>
+
+              <span className="text-m flex-wrap">
+              Ideal candidates for a tummy tuck are individuals in good health who have excess skin or fat deposits in the abdominal area that do not respond to diet and exercise. It&apos;s crucial for patients to have realistic expectations and understand the surgery&apos;s scope and limitations.
+
+
+</span>
+        
+              <br />
+
+              <h2 className="font-bold text-xl mt-12">
+                The Surgical Procedure
+              </h2>
+
+              The specific procedures vary based on individual needs. They can include mastectomy, breast augmentation, vaginoplasty, phalloplasty, and facial feminization or masculinization surgeries, among others.
+  <br />
+  <br />
+  <span className="text-m flex-wrap">
+  The surgery typically takes 2-5 hours, under general anesthesia. An incision is made across the lower abdomen, and the surgeon removes excess skin, tightens the abdominal muscles, and repositions the navel if necessary. The method and incision length can vary based on individual needs.
+  <br />
+  <br />
+  <ul className="custom-bullet-list">
+    <li>Full abdominoplasty: For patients who need muscle repair and skin removal.</li>
+    <li>Mini abdominoplasty: Targets only the area below the navel without muscle repair.</li>
+    <li>Extended abdominoplasty: Addresses the abdomen and the flanks or sides.</li>
+  </ul>
+</span>
+            </div>
+          </CSSTransition>
+
+          <CSSTransition
+            in={showThirdSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[2]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl mt-12">
+                {" "}
+                Recovery and Results{" "}
+              </h2>
+
+              <span className="text-m flex-wrap">
+              Recovery time varies, but most patients can resume normal activities after 2-4 weeks. Initial results are evident immediately, but the final contour will be visible after several months as swelling subsides. Scarring will fade over time, becoming less noticeable.
+
+
+
+              </span>
+
+              <h2 className="font-bold text-xl mt-12">
               Benefits of a Tummy Tuck
-            </span>
-            <span className="text-m flex-wrap">
-              Beyond the cosmetic improvements, a tummy tuck can also alleviate certain discomforts like back pain and skin irritations due to sagging skin. It can also boost confidence and improve one&apos;s overall well-being.
-            </span>
-            <br/>
-          </section>
+              </h2>
+              <span>
+              The most significant benefits include a flatter, firmer abdominal contour, enhanced self-image, and the ability to wear a wider variety of clothing styles with confidence.
 
-          <section id="tummyTuck3" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
-              Ideal Candidates for a Tummy Tuck
-            </span>
-            <span className="text-m flex-wrap">
-              Ideal candidates are those in good overall health, non-smokers, and those who have realistic expectations about the procedure. It&apos;s also recommended for those who have had significant weight fluctuations or post-pregnancy changes.
-            </span>
-            <br/>
-          </section>
 
-          <section id="tummyTuck4" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12"> Surgical Procedure</span>
-            <span className="text-m flex-wrap">
-              The surgery involves an incision made from hip to hip, just above the pubic area. Excess skin and fat are removed, and the abdominal muscles are tightened. The navel is repositioned for a natural look. Depending on the extent of the procedure, drainage tubes might be placed temporarily.
-            </span>
-          </section>
 
-          <ConsultationForm style={{ paddingTop: "32px", paddingBottom: "32px" }} />
+
+              </span>
+              <br />
+
+              <h2 className="font-bold text-xl mt-12">Potential Risks</h2>
+
+              <span className="text-m flex-wrap">
+              As with any surgical procedure, there are risks involved, including infection, poor scarring, complications related to anesthesia, and the potential need for revision surgery. Discussing these risks with your surgeon during the consultation is essential.
+
+
+
+
+              </span>
+            </div>
+          </CSSTransition>
+
+          <CSSTransition
+            in={showFourthSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div ref={refsArray[3]} className={popupStyles.motion}>
+              <h2 className="font-bold text-xl mt-12">
+                Schedule a Consultation
+              </h2>
+
+              <span className="text-m flex-wrap">
+              Considering a tummy tuck? It&apos;s essential to consult with a board-certified plastic surgeon to gain a thorough understanding of the procedure, its benefits, and to determine if it&apos;s the right choice for you.
+
+
+
+
+              </span>
+              <br />
+
+              <ConsultationForm />
+            </div>
+          </CSSTransition>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default TummyTuckInfo;

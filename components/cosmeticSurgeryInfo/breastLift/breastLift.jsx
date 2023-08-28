@@ -1,91 +1,221 @@
 /** @format */
-import TreatmentCard from "@/components/treatmentCard/treatmentCard";
+
+import React, { useState, useRef, useEffect } from "react";
+import InfoCard from "@/components/infoCard/infoCard";
 import ConsultationForm from "@/components/consultForm/consultForm";
+import styles from "@/components/infoCard/infoCard.module.css";
+import popupStyles from "@/pages/resources/pop_cosmeticsurgery/popup_allSurgeries.module.css";
+import { CSSTransition } from "react-transition-group";
 
-export default function BreastLiftInfo() {
-  return (
-    <div className="overscroll-y-auto flex h-screen bg-transparent p-0 w-full  ">
-      <div className="flex h-screen bg-white pl-16 w-full pr-16">
-        <div className="bg-transparent p-10 px-0 2 ">
-          
-          <section id="breastLift1">
-            <h2 className="font-bold text-xl">Cosmetic Surgery Breast Lift (Mastopexy)</h2>
-            <span className="text-m flex-wrap">
-              A cosmetic surgery breast lift, known medically as a mastopexy, is designed to elevate drooping or sagging breasts to a more youthful and perkier position on the chest. Over time, factors such as gravity, pregnancy, breastfeeding, and the aging process can lead to a decrease in the skin&apos;s elasticity, causing the breasts to lose their firmness and uplifted contour. Mastopexy tightens and removes excess skin while lifting the breasts. The nipples and areolae can also be repositioned or resized if desired.
-            </span>
-            <br />
-            <span className="text-m flex-wrap">
-              For some individuals, a breast lift may be combined with breast augmentation to restore volume, particularly in the upper part of the breast, while others might opt for a breast reduction in conjunction with a lift.
-            </span>
-            <div className="flex flex-row justify-items space-x-32 mt-8 ">
-              <TreatmentCard
-                imageUrl="/images/info/lift1.PNG"
-                description="The surgeon marks the breasts, delineating the excess skin to be removed and the new position for the nipple."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/lift2.PNG"
-                description="Excess skin is removed and the breast tissue is reshaped. The nipple and areola are elevated to a more forward position."
-              />
-              <TreatmentCard
-                imageUrl="/images/info/lift3.PNG"
-                description="After surgery, breasts appear uplifted and firmer. Scars will mature and fade over time."
-              />
+
+export const BreastLiftInfo = React.forwardRef((props) => {
+  BreastLiftInfo.displayName = 'BreastLiftInfo';
+  const { onClose } = props;
+  const [showFirstSection, setShowFirstSection] = useState(false);
+  const [showSecondSection, setShowSecondSection] = useState(false);
+  const [showThirdSection, setShowThirdSection] = useState(false);
+  const [showFourthSection, setShowFourthSection] = useState(false);
+  const breastLiftPopupRef = useRef(null);
+  const refsArray = [useRef(null), useRef(null), useRef(null), useRef(null)];
+
+  const popupHeight = breastLiftPopupRef.current ? breastLiftPopupRef.current.offsetHeight : 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      refsArray.forEach((ref, index) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const isPartiallyVisible = rect.top < popupHeight && rect.bottom > 0;
+
+          switch (index) {
+            case 0:
+              setShowFirstSection(isPartiallyVisible);
+              break;
+            case 1:
+              setShowSecondSection(isPartiallyVisible);
+              break;
+            case 2:
+              setShowThirdSection(isPartiallyVisible);
+              break;
+            case 3:
+              setShowFourthSection(isPartiallyVisible);
+              break;
+            default:
+              break;
+          }
+        }
+      });
+    };
+
+    if (breastLiftPopupRef.current) {
+      breastLiftPopupRef.current.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (breastLiftPopupRef.current) {
+        breastLiftPopupRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [breastLiftPopupRef, refsArray, popupHeight]);
+
+  useEffect(() => {
+    if (onClose) {
+      onClose();
+    }
+  }, [onClose]);
+  
+    return (
+      <div className={popupStyles.popupContainer} ref={breastLiftPopupRef}>
+      <div className="flex w-full">
+        <div className={popupStyles.popup_Info}>
+          <CSSTransition
+            in={showFirstSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div 
+              ref={refsArray[0]} 
+              className={popupStyles.motion}
+            >
+              <h2 className="font-bold text-xl">
+                Cosmetic Surgery Breast Lift
+              </h2>
+
+              <span className="text-m flex-wrap">
+                <br />
+                A cosmetic surgery breast lift, also known as mastopexy, is performed to elevate sagging breasts to a more youthful position. This procedure involves the removal of excess skin and the reshaping of the breast tissue. Breasts that have lost volume over time can be simultaneously augmented using implants. The goal of a breast lift is to give the breasts a firmer, more uplifted appearance.
+              </span>
+              <br />
+              <span className="text-m flex-wrap">
+                For many women, the combination of aging, gravity, childbirth, and breastfeeding can cause the breasts to sag and lose their youthful shape. A breast lift can rejuvenate the figure by achieving a more uplifted and firm breast contour.
+              </span>
+
+              <div className={styles.iCardContainer}>
+                <InfoCard
+                  imageUrl="/images/info/bLift1.png"
+                  description="
+                    The process involves removing excess skin and reshaping the breast tissue to raise the breasts."
+                />
+                <InfoCard
+                  imageUrl="/images/info/bLift2.png"
+                  description="
+                    The nipples and areolas can be repositioned to enhance the overall appearance."
+                />
+                <InfoCard
+                  imageUrl="/images/info/bLift3.png"
+                  description="
+                    After surgery, the breasts will appear more uplifted and firmer. Scars, although permanent, will fade over time."
+                />
+              </div>
             </div>
-          </section>
+          </CSSTransition>
 
-          <section id="BreastLift2" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
-              Importance of Mastopexy
-            </span>
-            <span className="text-m flex-wrap">
-              A breast lift can significantly improve one&apos;s silhouette and rejuvenate their appearance. The procedure can instill a newfound sense of confidence in individuals who may have felt self-conscious about the appearance of their breasts. Beyond aesthetics, a lift can also alleviate any discomfort caused by sagging breasts.
-            </span>
-            <br/>
-          </section>
+          <CSSTransition
+            in={showSecondSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div 
+              ref={refsArray[1]} 
+              className={popupStyles.motion}
+            >
+              <h2 className="font-bold text-xl mt-12">
+                The Appeal of Breast Lifts
+              </h2>
 
-          <section id="BreastLift3" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12">
-              Ideal Candidates for a Breast Lift
-            </span>
-            <span className="text-m flex-wrap">
-              Ideal candidates for a mastopexy are those experiencing sagging breasts due to aging, gravity, pregnancy, or weight fluctuations. Good candidates should be generally healthy, non-smokers, and have realistic expectations about the outcomes.
-            </span>
-            <br/>
-          </section>
+              <span className="text-m flex-wrap">
+                The decision to have a breast lift stems from the desire to restore a youthful and perky breast shape. The procedure can dramatically improve self-confidence and body image by restoring the natural contours of the breasts.
+              </span>
+              <br />
 
-          <section id="BreastLift4" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12"> Surgical Procedure</span>
-            <span className="text-m flex-wrap">
-              The surgery is typically performed under general anesthesia. The technique and incision pattern will vary depending on the degree of lift required and individual patient factors. Common incisions include a circular pattern around the areola, a keyhole shape around the areola and vertically down, or an anchor shape that includes a horizontal incision along the breast crease.
-            </span>
-            <br />
-            <br />
-            Incision options include:
-            <br />
-            <br />
-            <ul className="custom-bullet-list">
-              <li>Circular around the areola (peri-areolar)</li>
-              <li>Keyhole or racquet-shaped, around the areola and vertically down (vertical mastopexy)</li>
-              <li>Anchor-shaped, as in the keyhole but with an additional horizontal cut along the breast crease (inverted T or Wise pattern)</li>
-            </ul>
-            <br />
-            <br />
-          </section>
+              <h2 className="font-bold text-xl mt-12">
+                Best Candidates for a Breast Lift
+              </h2>
 
-          <section id="BreastLift5" style={{marginTop: '2em'}}>
-            <span className="font-bold text-xl mt-12"> Benefits of a Breast Lift</span>
-            <span className="text-m flex-wrap">
-              A breast lift can offer rejuvenated contours, improved breast symmetry, and increased self-confidence. By elevating the breasts, individuals can achieve a more youthful bust line and potentially find greater ease in fitting into certain styles of clothing.
-            </span>
-            <br />
-            <span className="text-m flex-wrap">
-              For many, the procedure offers emotional benefits, boosting self-esteem and body image. Moreover, combining mastopexy with augmentation or reduction can provide additional volume or size changes tailored to individual desires.
-            </span>
-          </section>
+              <span className="text-m flex-wrap">
+                Ideal candidates for breast lifts are women who have experienced changes in breast shape due to aging, weight fluctuations, childbirth, and breastfeeding. It&apos;s crucial that they are in good health, understand the procedure fully, and have realistic expectations about the results.
+              </span>
+              <br />
 
-          <ConsultationForm style={{ paddingTop: "32px", paddingBottom: "32px" }} />
+              <h2 className="font-bold text-xl mt-12">
+                The Surgical Procedure
+              </h2>
+
+              <span className="text-m flex-wrap">
+                The surgery typically takes 2-3 hours and can be done under general or local anesthesia. The technique chosen by the surgeon will depend on the patient&apos;s breast size, degree of sagging, and individual goals. Common incision patterns include:
+                <br />
+                <br />
+                <ul className="custom-bullet-list">
+                  <li>Around the areola (periareolar incision)</li>
+                  <li>Around the areola and vertically down to the breast crease (lollipop incision)</li>
+                  <li>Around the areola, vertically down to the breast crease and then horizontally along the breast crease (anchor or inverted-T incision)</li>
+                </ul>
+              </span>
+            </div>
+          </CSSTransition>
+
+          <CSSTransition
+            in={showThirdSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div 
+              ref={refsArray[2]} 
+              className={popupStyles.motion}
+            >
+              <h2 className="font-bold text-xl mt-12"> Recovery and Results </h2>
+
+              <span className="text-m flex-wrap">
+                Recovery from a breast lift varies from patient to patient, but most can expect mild discomfort, swelling, and bruising initially. Results are immediately visible, and scars will fade over time, becoming less noticeable.
+              </span>
+
+              <h2 className="font-bold text-xl mt-12">
+                Benefits of a Breast Lift
+              </h2>
+              <span>
+                Elevating and reshaping sagging breasts, enhancing breast symmetry, resizing and repositioning the areolas, and restoring a more youthful breast contour are some of the many benefits of a breast lift.
+              </span>
+              <br />
+
+              <h2 className="font-bold text-xl mt-12">
+                Potential Risks
+              </h2>
+
+              <span className="text-m flex-wrap">
+                As with any surgery, there are risks involved, including infection, poor scarring, asymmetry, and changes in nipple sensation. It&apos;s crucial to discuss these risks with your surgeon during the consultation.
+              </span>
+            </div>
+          </CSSTransition>
+
+          <CSSTransition
+            in={showFourthSection}
+            timeout={1000}
+            classNames="fade"
+            unmountOnExit={false}
+          >
+            <div 
+              ref={refsArray[3]} 
+              className={popupStyles.motion}
+            >
+              <h2 className="font-bold text-xl mt-12">
+                Schedule a Consultation
+              </h2>
+
+              <span className="text-m flex-wrap">
+                Are you considering a breast lift? It&apos;s important to consult with a board-certified plastic surgeon to understand your options and determine the best approach for you.
+              </span>
+              <br />
+
+              <ConsultationForm />
+            </div>
+          </CSSTransition>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default BreastLiftInfo;
