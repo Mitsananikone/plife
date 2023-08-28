@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     padding: 1rem;
-    background-color: transparent;
+    background-color: black;
     z-index: 999;
 
 }
@@ -32,7 +32,7 @@
 
 
 .navItem {
-
+display: inline-block;
     margin-left: 3%;
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -137,7 +137,11 @@
   .link:focus,
   .link:hover {
   color: #c6e2ff;
-      
+  }
+
+  .shine {
+    border: 1px solid white;
+
   }
 
   
