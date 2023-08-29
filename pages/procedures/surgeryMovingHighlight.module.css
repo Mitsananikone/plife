@@ -6,6 +6,10 @@
     background-color: transparent;
 }
 
+.text-left, .text-right {
+    opacity: 0.7;
+  }
+
 .headerText {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -39,10 +43,9 @@
 }
 
 .detailsButtonContainer {
-    display: flex;
-    z-index: 0;
     justify-content: center;
-    cursor: pointer;
+    align-items: center;
+    margin-top: 2rem;
 }
 
 .detailsButton {
@@ -70,6 +73,7 @@
 .mainTitle {
     width: 100%;
 }
+
 
 
 /* Media Queries */

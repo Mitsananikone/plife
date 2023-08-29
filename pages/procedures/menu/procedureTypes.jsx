@@ -21,7 +21,7 @@ export default function ProcedureTypes() {
 
   return (
     <div className={styles.procedureContainer}>
-      <h1>VIEW PROCEDURES AND ProcedureTypes</h1>
+      <h1>VIEW PROCEDURES AND TREATMENTS</h1>
       <div className={styles.bothGroups}>
         <div className={styles.tCardGroup1}>
           <TreatmentCard

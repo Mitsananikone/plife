@@ -11,15 +11,11 @@ import MotionTest from '@/components/motionTest';
 
 export default function Home() {
     return (
-        //  <div className="container">
-        <>
+ <>
         <LandingPopup/>
-     <div className="full-flex-centered"> 
-            {/* <ProcedureTypes/> */}
-            {/* <CosmeticSurgeryPage/>
-<BreastImplantInfo/> */}
-            <MotionTest/>
-            {/* <LandingPage /> */}
+     <div style={{display: 'flex', alignItems: 'center', justifyItems: 'center'}}> 
+
+            <LandingPage />
      
             {/* <AboutPage/>
             <ProcedurePage/> */}

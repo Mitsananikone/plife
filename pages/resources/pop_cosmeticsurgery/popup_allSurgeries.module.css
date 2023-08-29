@@ -68,7 +68,7 @@
 }
 
 .popup_info {
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     position: relative;
     /* Allows for the positioning of child pseudo-elements */
     margin-top: 5em;

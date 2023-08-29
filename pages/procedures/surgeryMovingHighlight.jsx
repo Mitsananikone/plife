@@ -3,10 +3,27 @@
 import React, { useRef, useEffect, useState } from "react";
 import Link from "next/link"; // Import the Link component
 import styles from "./surgeryMovingHighlight.module.css";
+import { motion } from "framer-motion";
 
 export default function ProceduresCard() {
   const titleRef = useRef(null);
   const containerRef = useRef(null);
+
+  const fadeIn = {
+    hidden: { opacity: 0.8 },  // Words are dimmed
+    visible: { opacity: 1, color: 'white', transition: { duration: 1 } }, // Words are highlighted
+  };
+  
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 1, // each child animates 0.5s after the previous one
+      },
+    },
+  };
+  
 
   const fitTitle = () => {
     const container = containerRef.current;
@@ -37,13 +54,13 @@ export default function ProceduresCard() {
   const [highlightRow, setHighlightRow] = useState(0);
 
   useEffect(() => {
-    // Cycle through highlight rows every 3 seconds
     const highlightInterval = setInterval(() => {
-      setHighlightRow((prevRow) => (prevRow + 1) % 4);
-    }, 1500);
-
+      setHighlightRow((prevRow) => (prevRow + 1) % 8); // there are 8 lines, not 4 pairs now
+    }, 750); // adjust this duration to your liking
+  
     return () => clearInterval(highlightInterval);
   }, []);
+  
 
   useEffect(() => {
     fitTitle();
@@ -70,63 +87,81 @@ export default function ProceduresCard() {
           <h1 ref={titleRef} className={styles.mainTitle}>
             OUR PROCEDURES
           </h1>
-          <div className={styles.highlightText}>
-            <p className={`text-left ${highlightRow === 0 ? "fade-in" : ""}`}>
+          <motion.div variants={container} initial="hidden" animate="show" className={styles.highlightText}>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 0 ? "visible" : "hidden"}
+              className="text-left"
+            >
               BEAUTY
-            </p>
-            <p className={`text-right ${highlightRow === 0 ? "fade-in" : ""}`}>
+            </motion.p>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 0 ? "visible" : "hidden"}
+              className="text-left"
+            >
               SURGERY
-            </p>
-            <p
-              className={`text-left mt-2 ${
-                highlightRow === 1 ? "fade-in" : ""
-              }`}
+            </motion.p>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 1 ? "visible" : "hidden"}
+              className="text-left"
             >
               GENDER
-            </p>
-            <p
-              className={`text-right mt-2 ${
-                highlightRow === 1 ? "fade-in" : ""
-              }`}
+            </motion.p>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 1 ? "visible" : "hidden"}
+              className="text-left"
             >
               TRANSITIONING
-            </p>
-            <p
-              className={`text-left mt-2 ${
-                highlightRow === 2 ? "fade-in" : ""
-              }`}
+            </motion.p>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 2 ? "visible" : "hidden"}
+              className="text-left"
             >
               AESTHETIC
-            </p>
-            <p
-              className={`text-right mt-2 ${
-                highlightRow === 2 ? "fade-in" : ""
-              }`}
+            </motion.p>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 2 ? "visible" : "hidden"}
+              className="text-left"
             >
               NON-SURGICAL
-            </p>
-            <p
-              className={`text-left mt-2 ${
-                highlightRow === 3 ? "fade-in" : ""
-              }`}
+            </motion.p>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 3 ? "visible" : "hidden"}
+              className="text-left"
             >
               DENTAL
-            </p>
-            <p
-              className={`text-right mt-2 ${
-                highlightRow === 3 ? "fade-in" : ""
-              }`}
+            </motion.p>
+            <motion.p
+              variants={fadeIn}
+              initial="hidden"
+              animate={highlightRow === 3 ? "visible" : "hidden"}
+              className="text-left"
             >
               PROCEDURES
-            </p>
-          </div>
-          <div className={styles.detailsButtonContainer}>
+            </motion.p>
+            </motion.div>
+            <div className={styles.detailsButtonContainer}>
             <Link href="/procedures/menu/procedureTypes" passHref>
               <button className={styles.detailsButton}>View Details</button>
             </Link>
           </div>
+          </div>
+         
         </div>
       </div>
-    </div>
+
   );
 }

@@ -86,7 +86,7 @@
 
     .procedureContainer > h1 {
         font-size: 0.5em;
-        color: violet;
+        /* color: violet; */
     }
 
     .tCardGroup1, .tCardGroup2 {
@@ -112,7 +112,7 @@
         margin-top: -10%;
         font-size: 0.7em;
         text-align: center;
-        color: blue; /* Using blue as the final color. If you prefer indigo, change it. */
+       
     }
     .bothGroups {
         padding: 2em;
@@ -130,7 +130,7 @@
         height: max-content;
     }
     .procedureContainer>h1 {
-        color: yellow; /* Using yellow as the final color. If you prefer green, change it. */
+        /* color: yellow; Using yellow as the final color. If you prefer green, change it. */
     }
     .tCardGroup1, .tCardGroup2 {
         margin-top: 4em;
@@ -151,7 +151,7 @@
         height: max-content;
     }
     .procedureContainer>h1 {
-        color: yellow; /* Using yellow as the final color. If you prefer green, change it. */
+        /* color: yellow; Using yellow as the final color. If you prefer green, change it. */
     }
     .tCardGroup1, .tCardGroup2 {
         margin-top: 4em;
@@ -171,7 +171,7 @@
     }
     
     .procedureContainer>h1 {
-        color: orange;
+        /* color: orange; */
     }
     
     .tCardGroup1, .tCardGroup2 {
@@ -199,7 +199,7 @@
     }
     
     .procedureContainer>h1 {
-        color: red;
+        /* color: red; */
     }
     
     .tCardGroup1, .tCardGroup2 {
